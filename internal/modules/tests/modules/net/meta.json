@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "modules": [
+    {
+      "name": "nmap",
+      "cmd": ["nmap", "-sV", "<TARGET>"],
+      "sha256": "5ce2c5709348551765ff2422d9feb14690a2a03bfecbcf4a83058112a156981f"
+    }
+  ]
+}

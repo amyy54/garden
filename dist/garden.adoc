@@ -1,0 +1,126 @@
+GARDEN(1)
+=========
+:doctype: manpage
+:manmanual: Garden
+:mansource: garden: {version}
+
+
+NAME
+----
+garden - A tool for orchestrating automated vulnerability scans for small businesses.
+
+
+SYNOPSIS
+--------
+*garden* ['OPTIONS']
+
+
+DESCRIPTION
+-----------
+Garden allows for small businesses to orchestrate the scanning of a
+network/server by managing the environments of common scanning tools in an
+easy to understand way with Docker.
+
+
+OPTIONS
+-------
+*-target*='TARGET_HOST'::
+    Sets the target that will be passed to the modules. As of now, the program
+    doesn't distinguish what it is, and generally anything can be passed
+    through with this identifier. It is expected that the target will be an
+    IP address or website.
+
+*-host*='DOCKER_HOST'::
+    Sets the specfic docker endpoint to use for running the scan. This can
+    be any Docker endpoint supported by the Docker API, along with SSH. While
+    the tool can be run just on the host's docker instance, this tool is more
+    effective when running on a jumphost. The only requirement is that Docker
+    be installed on the jumphost. When using with cloud vendors, be sure to
+    set up an instance/container that it points to.
+
+*-context*='DOCKER_CONTEXT'::
+    Instead of specifying the endpoint directly, if the jumphost is saved in
+    the local docker context, it can be read from there. If DOCKER_HOST and
+    DOCKER_CONTEXT are both blank, the currently selected docker context is
+    read.
+
+*-modules*='MODULES_DIRECTORY'::
+    Sets the directory to search for modules from. Module directories are
+    required to possess a meta.json. See module resources below. Defaults to
+    ./modules.
+
+*-ignore-hash*::
+    Ignores all hash checking for modules. Useful for debugging purposes, but
+    ill advised for regular use.
+
+*-output*='REPORTS_DIRECTORY'::
+    Sets the directory to place the generated reports/output of the modules
+    run. The reports will not go directly in here, but instead another
+    directory will be created with a filename representing the time the
+    containers started. Reports are documented for the build output from
+    Docker, the output from the container, and any error messages that occurred
+    with the Docker API.
+
+*-list*::
+    Lists all modules in the supplied modules directory. Useful for debugging
+    and ensuring that the hashes for the categories were successful.
+
+*-category*='CATEGORIES_TO_LOAD'::
+    Sets the categories to be run in this scan. Categories are based on the
+    directory names in the main modules directory, as specified with
+    *-modules*. Multiple categories may be specified by separating with commas.
+    While discouraged, * can be specified as a category, which will execute
+    all categories present.
+
+*-single*='MODULES_TO_LOAD'::
+    Sets individual modules to be run in the scan. Modules must be specified
+    with the category/directory they exist under, for example net/nmap. Any
+    individual module(s) executed will be reported under the category "single".
+    Multiple individual modules may be specified by separating with commas.
+
+*-modargs*='MODULE_ARGUMENTS'::
+    Allows for individual modules to have their own parameters/arguments as
+    needed. To set them, you can supply argument with the category/name, then
+    the key=value pair. Additional arguments are separated by commas. For
+    example: 'net/shodan-api_key=key,web/nuclei-templates=cves'.
+
+*-version*::
+    Print the version and exit.
+
+*-v[v]*::
+    Verbose logging.
+
+
+BUGS
+----
+See the issues on the garden GitHub repository:
+https://github.com/amyy54/garden/issues
+
+
+AUTHOR
+------
+Amy C public@amyy.me
+
+
+RESOURCES
+---------
+GitHub: https://github.com/amyy54/garden
+
+Module Resources: https://github.com/amyy54/garden-modules
+
+
+COPYRIGHT
+---------
+Copyright 2025 Amy C
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

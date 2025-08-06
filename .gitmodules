@@ -1,0 +1,3 @@
+[submodule "garden-modules"]
+	path = garden-modules
+	url = https://github.com/amyy54/garden-modules.git

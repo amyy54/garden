@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "name": "net",
+      "sha256": "04acf2a1967a3d6acc18a17dfd8341878072896f2db6126ba1c4b6758ab1a7c2"
+    },
+    {
+      "name": "web",
+      "sha256": "a279323b05129f9460dafc3a7c78dfba442a93d84d35e8a79baf808bfd3e621e"
+    }
+  ]
+}

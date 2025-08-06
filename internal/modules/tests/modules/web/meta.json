@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "modules": [
+    {
+      "name": "nuclei",
+      "cmd": ["nuclei", "-target=<TARGET>"],
+      "sha256": "16002fdc87fd34884898c74adbcf7f8c2c0732dfe12137743f327182a2736acf"
+    }
+  ]
+}
